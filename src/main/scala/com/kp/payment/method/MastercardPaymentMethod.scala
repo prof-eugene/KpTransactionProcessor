@@ -2,6 +2,9 @@ package com.kp.payment.method
 
 import com.kp.common.Loggable
 
+/**+
+  * Payment method for Mastercard cards
+  */
 case class MastercardPaymentMethod() extends PaymentMethod with Loggable{
 
   def makePayment(sumInCents: Int):Boolean = {

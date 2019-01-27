@@ -7,7 +7,9 @@ import com.kp.tool.BagGenerator
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 
-
+/**+
+  * General class to represent flow and provide stats. Execution is asynchronous.
+  */
 class KpTransactionProcessor extends Loggable {
   def run(limit: Int) {
     val startTime = System.currentTimeMillis()

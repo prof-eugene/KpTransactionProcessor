@@ -7,9 +7,15 @@ import com.kp.payment.result.{FailedPaymentResult, PaymentResult, SuccessfulPaym
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-
+/**+
+  * General trait to support payment methods
+  */
 trait PaymentMethod extends Loggable {
-
+  /**+
+    * General template method of payment process
+    * @param payable payable object that provides sum to pay
+    * @return true if payment completed successfully, false - otherwise
+    */
   def pay(payable: Payable): Future[PaymentResult] = {
     Future {
       log.info("Trying to pay amount: {}", payable.getSumInCents)
@@ -28,6 +34,11 @@ trait PaymentMethod extends Loggable {
     }
   }
 
+  /**+
+    * Actual payment method to be implemented particular payment methods (engines)
+    * @param sumInCents sum to pay in cents
+    * @return true, if completed successfully
+    */
   def makePayment(sumInCents: Int): Boolean
 }
 
@@ -35,11 +46,15 @@ trait PaymentMethod extends Loggable {
 object PaymentMethod {
   val processingMs: Int = 50
 
+  /**+
+    * factory method to construct payment methods
+    * @param name payment method name (Visa, Mastercard)
+    * @return
+    */
   def apply(name: String): PaymentMethod = {
     name match {
       case "Visa" => VisaPaymentMethod()
       case "Mastercard" => MastercardPaymentMethod()
-      //   _ => throw new IllegalArgumentException(/*s"Payment method $_ is unknown!"*/)
     }
   }
 }

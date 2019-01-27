@@ -2,6 +2,9 @@ package com.kp.payment.method
 
 import com.kp.common.Loggable
 
+/**+
+  * Payment method for Visa cards
+  */
 case class VisaPaymentMethod() extends PaymentMethod with Loggable {
 
   def makePayment(sumInCents: Int):Boolean = {

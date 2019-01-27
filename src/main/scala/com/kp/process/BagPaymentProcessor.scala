@@ -7,6 +7,9 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.util.{Failure, Success}
 
+/**+
+  * Process to manage payments for list of bags
+  */
 class BagPaymentProcessor extends Loggable {
   def process(bags: TraversableOnce[Bag]): Future[TraversableOnce[Bag]] = {
 

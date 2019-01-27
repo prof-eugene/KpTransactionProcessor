@@ -8,7 +8,9 @@ import com.kp.tool.BagGenerator
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 
-
+/**+
+  * Main class to run
+  */
 object Main extends App with Loggable {
 
   new KpTransactionProcessor().run(1000)

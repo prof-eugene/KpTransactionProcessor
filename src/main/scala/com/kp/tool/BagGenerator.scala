@@ -5,7 +5,11 @@ import com.kp.client.Client
 import com.kp.common.Loggable
 import com.kp.payment.method.PaymentMethod
 
-
+/**+
+  * Tool class to generate a list of bags
+  * @param limit maximum elements to be generated
+  * @param mastercardRatio ratio for Mastercard cards, otherwise will be Visa
+  */
 class BagGenerator(limit: Int, mastercardRatio: Double = 0.5) extends Iterator[Bag] with Loggable {
   val random = new scala.util.Random()
   var current = 0
