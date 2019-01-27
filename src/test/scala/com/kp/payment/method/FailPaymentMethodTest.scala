@@ -12,7 +12,7 @@ import scala.concurrent.{Await, Future}
 class FailPaymentMethodTest extends FunSuite {
 
   test("makePayment method always fails") {
-    val pm = FailPaymentMethod()
+    val pm = PaymentMethod("Failed")
     assert(pm.makePayment(0) === false)
   }
 
@@ -20,7 +20,7 @@ class FailPaymentMethodTest extends FunSuite {
   test("pay method always fails") {
     val expected = FailedPaymentResult("failed")
 
-    val pm = FailPaymentMethod()
+    val pm = PaymentMethod("Failed")
     val resultFuture = Future {
       pm.pay(Bag("", null))
     }

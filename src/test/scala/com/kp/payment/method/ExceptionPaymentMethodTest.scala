@@ -11,7 +11,7 @@ import scala.concurrent.{Await, Future}
 class ExceptionPaymentMethodTest extends FunSuite {
 
   test("makePayment method always throws an exception") {
-    val pm = ExceptionPaymentMethod()
+    val pm = PaymentMethod("Exception")
     intercept[Exception] {
       pm.makePayment(0)
     }
@@ -21,7 +21,7 @@ class ExceptionPaymentMethodTest extends FunSuite {
   test("pay method always fails after exception") {
     val expected = FailedPaymentResult("PaymentMethod exception")
 
-    val pm = ExceptionPaymentMethod()
+    val pm = PaymentMethod("Exception")
     val resultFuture = Future {
       pm.pay(Bag("", null))
     }

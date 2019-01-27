@@ -55,6 +55,8 @@ object PaymentMethod {
     name match {
       case "Visa" => VisaPaymentMethod()
       case "Mastercard" => MastercardPaymentMethod()
+      case "Failed" => FailPaymentMethod()
+      case "Exception" => ExceptionPaymentMethod()
     }
   }
 }
